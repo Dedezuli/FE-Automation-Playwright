@@ -1,0 +1,16 @@
+[
+  {
+    "name": "AssertionError",
+    "matchedStatuses": [
+      "failed"
+    ],
+    "messageRegex": ".*expect.*toBe.*"
+  },
+  {
+    "name": "TimeoutError",
+    "matchedStatuses": [
+      "broken"
+    ],
+    "messageRegex": ".*Timeout.*"
+  }
+]

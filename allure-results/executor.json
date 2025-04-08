@@ -1,0 +1,9 @@
+{
+  "name": "Local Machine",
+  "type": "local",
+  "url": "http://localhost:3000",
+  "buildOrder": 1,
+  "buildName": "Playwright Test",
+  "buildUrl": "http://localhost:3000/build/1",
+  "reportUrl": "http://localhost:3000/report"
+}
