@@ -1,0 +1,63 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Login >> user should login successfully with valid credentials
+- Location: /home/runner/work/FE-Automation-Playwright/FE-Automation-Playwright/tests/login.spec.ts:22:5
+
+# Error details
+
+```
+Error: page.goto: net::ERR_CONNECTION_RESET at https://mantis.simasfinance.co.id/
+Call log:
+  - navigating to "https://mantis.simasfinance.co.id/", waiting until "load"
+
+    at MantisPage.goto (/home/runner/work/FE-Automation-Playwright/FE-Automation-Playwright/pages/MantisPage.ts:11:21)
+    at /home/runner/work/FE-Automation-Playwright/FE-Automation-Playwright/tests/login.spec.ts:24:16
+```
+
+# Test source
+
+```ts
+   1 | import { Page, expect } from '@playwright/test';
+   2 |
+   3 | export class MantisPage {
+   4 |   readonly page: Page;
+   5 |
+   6 |   constructor(page: Page) {
+   7 |     this.page = page;
+   8 |   }
+   9 |
+  10 |   async goto() {
+> 11 |     await this.page.goto('/');
+     |                     ^ Error: page.goto: net::ERR_CONNECTION_RESET at https://mantis.simasfinance.co.id/
+  12 |   }
+  13 |
+  14 |   async assertTitle() {
+  15 |     await expect(this.page).toHaveTitle('Pengumuman IT');
+  16 |   }
+  17 |
+  18 |   async assertLoginSuccess() {
+  19 |     await expect(this.page.getByRole('link', { name: 'Pengumuman IT' })).toBeVisible();
+  20 |   }
+  21 |
+  22 |   async goToMyView() {
+  23 |     await this.page.getByRole('link', { name: ' My View' }).click();
+  24 |   }
+  25 |
+  26 |   async searchIssue(issueText: string) {
+  27 |     const input = this.page.getByRole('textbox', { name: 'Issue #' });
+  28 |     await input.fill(issueText);
+  29 |     await input.press('Enter');
+  30 |   }
+  31 |
+  32 |   async assertApplicationError() {
+  33 |     await expect(this.page.locator('#main-container')).toContainText('APPLICATION ERROR #203');
+  34 |   }
+  35 | }
+  36 |
+```

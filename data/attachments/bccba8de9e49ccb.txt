@@ -1,0 +1,44 @@
+❌ Failed to connect: page.goto: net::ERR_ABORTED; maybe frame was detached?
+Call log:
+  - navigating to "https://mantis.simasfinance.co.id/", waiting until "load"
+
+    at /home/runner/work/FE-Automation-Playwright/FE-Automation-Playwright/tests/menu-my-view.spec.ts:20:18 {
+  name: 'Error',
+  [Symbol(step)]: {
+    stepId: 'pw:api@12',
+    location: {
+      file: '/home/runner/work/FE-Automation-Playwright/FE-Automation-Playwright/tests/menu-my-view.spec.ts',
+      line: 20,
+      column: 18
+    },
+    category: 'pw:api',
+    title: 'page.goto(https://mantis.simasfinance.co.id)',
+    apiName: 'page.goto',
+    params: {
+      url: 'https://mantis.simasfinance.co.id',
+      timeout: 60000,
+      waitUntil: 'load'
+    },
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@12'
+    },
+    complete: [Function: complete],
+    endWallTime: 1744359742993,
+    error: {
+      message: 'Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\n' +
+        'Call log:\n' +
+        '\x1B[2m  - navigating to "https://mantis.simasfinance.co.id/", waiting until "load"\x1B[22m\n',
+      stack: 'Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\n' +
+        'Call log:\n' +
+        '\x1B[2m  - navigating to "https://mantis.simasfinance.co.id/", waiting until "load"\x1B[22m\n' +
+        '\n' +
+        '    at /home/runner/work/FE-Automation-Playwright/FE-Automation-Playwright/tests/menu-my-view.spec.ts:20:18',
+      cause: undefined
+    }
+  }
+}
