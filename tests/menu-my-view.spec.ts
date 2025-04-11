@@ -16,6 +16,12 @@ test.describe('Menu My View', () => {
 
   test.beforeEach(async ({ page }) => {
     mantis = new MantisPage(page);
+    try {
+      await page.goto('https://mantis.simasfinance.co.id', { timeout: 60000 });
+      console.log('✅ Success');
+    } catch (err) {
+      console.error('❌ Failed to connect:', err);
+    }
     await mantis.goto();
     await login(page, credentials.username, credentials.password);
     await mantis.assertLoginSuccess();
