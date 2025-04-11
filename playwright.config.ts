@@ -46,7 +46,15 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: process.env.BASE_URL,
+        headless: true,
+        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112 Safari/537.36',
+        ignoreHTTPSErrors: true,
+        bypassCSP: true,
+        trace: 'on-first-retry',
+      },
     },
 
     // {
