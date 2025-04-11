@@ -26,9 +26,6 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Debug curl to test URL (insecure)
-        run: curl -kIv https://mantis.simasfinance.co.id
-
       - name: Run Playwright tests
         run: npx playwright test || true
 
