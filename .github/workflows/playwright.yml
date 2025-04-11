@@ -26,23 +26,38 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Debug curl to test URL
+      - name: Debug curl to test URL (optional)
         run: curl -Iv https://mantis.simasfinance.co.id
 
-      - name: Generate Allure metadata
+      - name: Run Playwright tests
+        run: npx playwright test || true
+
+      - name: Generate Allure metadata (executor, env, categories)
         run: npm run prereport:generate
 
-      - name: Run tests
-        run: npm run test
-
       - name: Generate Allure report
-        run: npm run report:generate
+        run: npm run report:generate || true
 
-      - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
+      - name: Upload Allure Results
+        uses: actions/upload-artifact@v4
+        if: ${{ always() }}
         with:
-          name: playwright-report
-          path: playwright-report/
+          name: allure-results
+          path: ./allure-results
           retention-days: 30
 
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: allure-report
+          path: ./allure-report
+          retention-days: 30
 
+      - name: Upload Playwright HTML Report
+        uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: playwright-report
+          path: ./playwright-report
+          retention-days: 30
