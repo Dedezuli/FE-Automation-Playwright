@@ -26,6 +26,9 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      - name: Debug curl to test URL
+        run: curl -Iv https://mantis.simasfinance.co.id
+
       - name: Generate Allure metadata
         run: npm run prereport:generate
 
